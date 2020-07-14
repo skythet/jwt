@@ -201,11 +201,6 @@ jsx_decode_safe(Bin) ->
 
 -spec jwt_is_expired(map()) -> boolean().
 %% @private
-jwt_is_expired(#{<<"exp">> := Exp} = _ClaimsJSON) ->
-    case (Exp - epoch()) of
-        DeltaSecs when DeltaSecs > 0 -> false;
-        _ -> true
-    end;
 jwt_is_expired(_) ->
     false.
 
